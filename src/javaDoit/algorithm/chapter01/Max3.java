@@ -1,4 +1,4 @@
-package javaDoit.algorithm.chaptor01;
+package javaDoit.algorithm.chapter01;
 
 import java.util.Scanner;
 
