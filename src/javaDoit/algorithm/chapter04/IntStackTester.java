@@ -43,7 +43,7 @@ public class IntStackTester {
                     }
                     break;
                 case 4 : s.dump();
-                    break;
+                        break;
             }
         }
     }
