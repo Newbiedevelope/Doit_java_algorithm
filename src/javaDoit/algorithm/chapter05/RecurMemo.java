@@ -15,6 +15,8 @@ class RecurMemo {
         else {
             if (n > 0) {
                 recur(n - 1);
+
+
                 System.out.println(n);
                 recur(n - 2);
                 memo[n + 1] = memo[n] + n + "\n" + memo[n-1];
