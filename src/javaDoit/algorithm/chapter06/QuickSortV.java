@@ -29,6 +29,8 @@ class QuickSortV {
                 swap(a, pl++, pr--);
         } while (pl <= pr);
         
+        // 피벗을 통해 영역을 분할하고, 
+        // 해당 영역에서 또 다시 퀵정렬을 수행하는 과정을 반복
         if (left < pr) quickSort(a, left, pr);
         if (right > pl) quickSort(a, pl, right);
     }
