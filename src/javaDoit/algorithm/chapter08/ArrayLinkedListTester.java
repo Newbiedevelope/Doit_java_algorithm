@@ -65,8 +65,8 @@ public class ArrayLinkedListTester {
 
             private final String message;
 
-            static LinkedListTester.Menu MenuAt(int idx) {
-                for (LinkedListTester.Menu m : LinkedListTester.Menu.values())
+            static Menu MenuAt(int idx) {
+                for (Menu m : Menu.values())
                     if (m.ordinal() == idx)
                         return m;
                 return null;
@@ -81,39 +81,39 @@ public class ArrayLinkedListTester {
             }
         }
 
-        static LinkedListTester.Menu SelectMenu() {
+        static Menu SelectMenu() {
             int key;
             do {
-                for (LinkedListTester.Menu m : LinkedListTester.Menu.values()) {
+                for (Menu m : Menu.values()) {
                     System.out.printf("(%d) %s  ", m.ordinal(), m.getMessage());
-                    if ((m.ordinal() % 3) == 2 && m.ordinal() != LinkedListTester.Menu.TERMINATE.ordinal())
+                    if ((m.ordinal() % 3) == 2 && m.ordinal() != Menu.TERMINATE.ordinal())
                         System.out.println();
                 }
                 System.out.print(" : ");
                 key = sc.nextInt();
-            } while (key < LinkedListTester.Menu.ADD_FIRST.ordinal() || key > LinkedListTester.Menu.TERMINATE.ordinal());
-            return LinkedListTester.Menu.MenuAt(key);
+            } while (key < Menu.ADD_FIRST.ordinal() || key > Menu.TERMINATE.ordinal());
+            return Menu.MenuAt(key);
         }
 
         public static void main(String[] args) {
-            LinkedListTester.Menu menu;
-            LinkedListTester.Data data;
-            LinkedListTester.Data ptr;
-            LinkedListTester.Data temp = new LinkedListTester.Data();
+            Menu menu;
+            Data data;
+            Data ptr;
+            Data temp = new Data();
 
-            LinkedList<LinkedListTester.Data> linkedList = new LinkedList<LinkedListTester.Data>();
+            ArrayLinkedList<Data> linkedList = new ArrayLinkedList<Data>(100);
 
             do {
                 switch (menu = SelectMenu()) {
                     case ADD_FIRST:
-                        data = new LinkedListTester.Data();
-                        data.scanData("머리에 삽입", LinkedListTester.Data.NO | LinkedListTester.Data.NAME);
+                        data = new Data();
+                        data.scanData("머리에 삽입", Data.NO | Data.NAME);
                         linkedList.addFirst(data);
                         break;
 
                     case ADD_LAST:
-                        data = new LinkedListTester.Data();
-                        data.scanData("꼬리에 삽입", LinkedListTester.Data.NO | LinkedListTester.Data.NAME);
+                        data = new Data();
+                        data.scanData("꼬리에 삽입", Data.NO | Data.NAME);
                         linkedList.addLast(data);
                         break;
 
@@ -130,16 +130,16 @@ public class ArrayLinkedListTester {
                         break;
 
                     case SEARCH_NO:
-                        temp.scanData("검색", LinkedListTester.Data.NO);
-                        ptr = linkedList.search(temp, LinkedListTester.Data.NO_ORDER);
+                        temp.scanData("검색", Data.NO);
+                        ptr = linkedList.search(temp, Data.NO_ORDER);
                         if (ptr == null)
                             System.out.println("그 번호의 데이터가 없습니다.");
                         else System.out.println("검색 성공 : " + ptr);
                         break;
 
                     case SEARCH_NAME:
-                        temp.scanData("검색", LinkedListTester.Data.NAME);
-                        ptr = linkedList.search(temp, LinkedListTester.Data.NAME_ORDER);
+                        temp.scanData("검색", Data.NAME);
+                        ptr = linkedList.search(temp, Data.NAME_ORDER);
                         if (ptr == null)
                             System.out.println("그 이름의 데이터가 없습니다.");
                         else
@@ -162,7 +162,7 @@ public class ArrayLinkedListTester {
                         linkedList.clear();
                         break;
                 }//close switch case
-            } while (menu != LinkedListTester.Menu.TERMINATE);
+            } while (menu != Menu.TERMINATE);
         }
     }
 
